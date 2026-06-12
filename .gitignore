@@ -3,7 +3,10 @@ __pycache__/
 .pytest_cache/
 web/node_modules/
 web/.next/
+web/.next-dev/
 web/out/
+web/tsconfig.tsbuildinfo
+*.tsbuildinfo
 data/raw/
 data/processed/
 data/db/

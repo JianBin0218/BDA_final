@@ -1,6 +1,8 @@
 __pycache__/
 .vscode/
 .pytest_cache/
+AGENTS.md
+SkillScope_Project_Proposal.md
 web/node_modules/
 web/.next/
 web/.next-dev/

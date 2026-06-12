@@ -35,6 +35,24 @@ jobs:
       - name: Validate frontend JSON
         run: python -m json.tool web/public/data/skillscope-taiwan.json > /tmp/skillscope-taiwan.json
 
+      - name: Validate source coverage
+        run: |
+          python - <<'PY'
+          import json
+          from collections import Counter
+
+          with open("web/public/data/skillscope-taiwan.json", encoding="utf-8") as handle:
+              payload = json.load(handle)
+
+          counts = Counter(job.get("source_platform") for job in payload.get("jobs", []))
+          print("Source counts:", dict(sorted(counts.items())))
+
+          required_sources = ("TaiwanJobs", "Cake", "1111")
+          missing = [source for source in required_sources if counts.get(source, 0) == 0]
+          if missing:
+              raise SystemExit(f"Missing required source data: {', '.join(missing)}")
+          PY
+
       - name: Run tests
         run: pytest -q
 

@@ -4,6 +4,4 @@ beautifulsoup4
 lxml
 pyarrow
 duckdb
-plotly
-streamlit
 pytest

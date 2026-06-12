@@ -1,6 +1,6 @@
 __pycache__/
+.vscode/
 .pytest_cache/
-.streamlit/
 web/node_modules/
 web/.next/
 web/out/

@@ -18,7 +18,7 @@
 | Primary Users | CS students and career changers |
 | Potential Paying Customers | University career centers, bootcamps, online learning platforms |
 | Core Deliverable | Dashboard + personalized skill-gap report generator + learning resource recommendation |
-| Deployment Target | Streamlit Cloud / Render / Hugging Face Spaces |
+| Deployment Target | Vercel-hosted Next.js dashboard |
 
 **Note:** LLM-generated career advice paragraph is intentionally deferred until the full core system is completed.
 
@@ -109,7 +109,7 @@ SkillScope 採用 two-sided customer design：學生與轉職者是主要使用�
 
 # 7. System Architecture
 
-系統採用 ingestion -> storage -> processing -> analytics -> delivery 的資料管線。初版可以使用 Python scripts + DuckDB/SQLite + Streamlit 完成，未來可擴展到 message queue、distributed processing 與 cloud storage。
+系統採用 ingestion -> storage -> processing -> analytics -> delivery 的資料管線。初版使用 Python scripts + Parquet/DuckDB + Next.js dashboard 完成，未來可擴展到 message queue、distributed processing 與 cloud storage。
 
 | Layer | Design |
 |---|---|
@@ -119,7 +119,7 @@ SkillScope 採用 two-sided customer design：學生與轉職者是主要使用�
 | Processing Layer | Cleaning, deduplication, salary parsing, remote detection, skill extraction, seniority detection |
 | Career Intelligence Layer | Role classification, skill vectorization, clustering, trend calculation, skill overlap analysis |
 | Analytical Database | DuckDB or SQLite for local analytics; PostgreSQL for scalable version |
-| Delivery Layer | Streamlit dashboard, filters, personalized report generator, course recommendation module |
+| Delivery Layer | Next.js dashboard, filters, personalized report generator, course recommendation module |
 
 ## 7.1 Architecture Diagram
 
@@ -239,8 +239,8 @@ Course recommendation 採用 skill-to-resource mapping，而不是複雜推薦�
 | Database | DuckDB or SQLite for prototype; PostgreSQL for scalable version |
 | NLP / Skill extraction | Keyword dictionary + regex + normalization; optional embedding-based matching |
 | Clustering | Skill vectorization + KMeans/HDBSCAN or rule-based + clustering hybrid |
-| Dashboard | Streamlit, Plotly/Altair, Pandas/DuckDB queries |
-| Deployment | Streamlit Cloud, Render, Hugging Face Spaces |
+| Dashboard | Next.js, React, Tailwind CSS, Recharts, static JSON export |
+| Deployment | Vercel |
 | Repository | GitHub with README, scripts, sample data, reproducible pipeline |
 
 ## 12.1 Milestones
@@ -288,7 +288,7 @@ Course recommendation 採用 skill-to-resource mapping，而不是複雜推薦�
 | Technical system design | End-to-end pipeline from ingestion to processing, clustering, dashboard, report generator, and deployment. | 40% |
 | Writing and presentation | Clear architecture diagram, tables, dashboard screenshots, and report structure. | 15% |
 | Bonus: GTM difficulties | Dedicated risk section covering data acquisition, trust, competition, legal issues, and unit economics. | +10% |
-| Bonus: deployment | Streamlit/Render/Hugging Face Spaces live demo. | +10% |
+| Bonus: deployment | Vercel-hosted live demo. | +10% |
 
 ---
 
